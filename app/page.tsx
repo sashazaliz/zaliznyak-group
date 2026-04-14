@@ -42,9 +42,10 @@ function useWaveGrid(
         pts[xi] = []
         for (let yi = 0; yi <= ROWS; yi++) {
           const bx = xi * cw, by = yi * ch
-          const w1 = Math.sin(xi * 0.45 + t * 0.55) * 11
-          const w2 = Math.cos(yi * 0.38 + t * 0.42) * 9
-          const w3 = Math.sin((xi + yi) * 0.3 + t * 0.28) * 5
+          const scale = Math.min(1, W / 900)   // 1.0 at 900px+, scales down on mobile
+          const w1 = Math.sin(xi * 0.45 + t * 0.55) * 11 * scale
+          const w2 = Math.cos(yi * 0.38 + t * 0.42) * 9  * scale
+          const w3 = Math.sin((xi + yi) * 0.3 + t * 0.28) * 5  * scale
           const px = bx + w1 + w3
           const py = by + w2 + w3
           const fx = (xi / COLS - 0.5) * 2
