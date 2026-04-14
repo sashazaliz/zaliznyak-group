@@ -79,7 +79,7 @@ function useWaveGrid(
 
       // Dots — sequential right-to-left sweep
       // sweepX moves from COLS → 0 over ~10 real seconds, then resets
-      const SWEEP_PERIOD = 20   // t-units per full right→left pass
+      const SWEEP_PERIOD = 15   // t-units per full right→left pass
       const sweepX  = COLS * (1 - (t % SWEEP_PERIOD) / SWEEP_PERIOD)
       const FALLOFF = 3.5       // glow width in columns on each side
 
