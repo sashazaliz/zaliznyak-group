@@ -79,7 +79,7 @@ function useWaveGrid(
 
       // Dots — sequential right-to-left sweep
       // sweepX moves from COLS → 0 over ~10 real seconds, then resets
-      const SWEEP_PERIOD = 70   // t-units per full right→left pass
+      const SWEEP_PERIOD = 35   // t-units per full right→left pass
       const sweepX  = COLS * (1 - (t % SWEEP_PERIOD) / SWEEP_PERIOD)
       const FALLOFF = 3.5       // glow width in columns on each side
 
@@ -91,8 +91,8 @@ function useWaveGrid(
           const dist  = Math.abs(xi - sweepX)
           const sweep = Math.max(0, 1 - dist / FALLOFF)
 
-          const dotAlpha = Math.min(1, edgeAlpha * (0.18 + sweep * 2.2))
-          const dotSize  = 0.7 + sweep * 2.4
+          const dotAlpha = Math.min(1, edgeAlpha * (0.22 + sweep * 3.8))
+          const dotSize  = 0.7 + sweep * 3.2
 
           ctx.beginPath()
           ctx.arc(px, py, dotSize, 0, Math.PI * 2)
