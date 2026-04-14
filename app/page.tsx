@@ -276,9 +276,11 @@ export default function Home() {
   }, [])
 
   const scrollTo = (id: string) => {
+  setMobOpen(false)
+  setTimeout(() => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setMobOpen(false)
-  }
+  }, 50)
+}
 
   const factorStyle = (pct: number): React.CSSProperties => ({ '--pct': pct } as React.CSSProperties)
   const cfStyle     = (p: number):   React.CSSProperties => ({ '--p':   p   } as React.CSSProperties)
