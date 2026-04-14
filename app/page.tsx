@@ -37,7 +37,6 @@ function useWaveGrid(
       ctx.clearRect(0, 0, W, H)
       const cw = W / COLS, ch = H / ROWS
 
-      // Pre-compute displaced positions
       const pts: Array<Array<{ px: number; py: number; edgeAlpha: number }>> = []
       for (let xi = 0; xi <= COLS; xi++) {
         pts[xi] = []
@@ -56,7 +55,7 @@ function useWaveGrid(
         }
       }
 
-      // Draw lines
+      // Lines
       for (let xi = 0; xi <= COLS; xi++) {
         for (let yi = 0; yi <= ROWS; yi++) {
           const { px, py, edgeAlpha } = pts[xi][yi]
@@ -78,28 +77,22 @@ function useWaveGrid(
       }
 
       // Dots — sequential right-to-left sweep
-      // sweepX moves from COLS → 0 over ~10 real seconds, then resets
-      const SWEEP_PERIOD = 4   // t-units per full right→left pass
+      const SWEEP_PERIOD = 20
       const sweepX  = COLS * (1 - (t % SWEEP_PERIOD) / SWEEP_PERIOD)
-      const FALLOFF = 3.5       // glow width in columns on each side
+      const FALLOFF = 3.5
 
       for (let xi = 0; xi <= COLS; xi++) {
         for (let yi = 0; yi <= ROWS; yi++) {
           const { px, py, edgeAlpha } = pts[xi][yi]
           if (edgeAlpha < 0.04) continue
-
           const dist  = Math.abs(xi - sweepX)
           const sweep = Math.max(0, 1 - dist / FALLOFF)
-
           const dotAlpha = Math.min(1, edgeAlpha * (0.22 + sweep * 3.8))
           const dotSize  = 0.7 + sweep * 3.2
-
           ctx.beginPath()
           ctx.arc(px, py, dotSize, 0, Math.PI * 2)
           ctx.fillStyle = `rgba(212,174,120,${dotAlpha.toFixed(3)})`
           ctx.fill()
-
-          // Soft glow halo at sweep front
           if (sweep > 0.4 && edgeAlpha > 0.15) {
             ctx.beginPath()
             ctx.arc(px, py, dotSize * 2.8, 0, Math.PI * 2)
@@ -126,7 +119,6 @@ function useWaveGrid(
 ═══════════════════════════════════════════ */
 function useCountUp(target: number, suffix: string, isVisible: boolean) {
   const [display, setDisplay] = useState('0' + suffix)
-
   useEffect(() => {
     if (!isVisible) return
     const duration = 2200
@@ -139,7 +131,6 @@ function useCountUp(target: number, suffix: string, isVisible: boolean) {
     }
     requestAnimationFrame(step)
   }, [isVisible, target, suffix])
-
   return display
 }
 
@@ -293,6 +284,30 @@ export default function Home() {
   const cfStyle     = (p: number):   React.CSSProperties => ({ '--p':   p   } as React.CSSProperties)
   const rowStyle    = (w: string):   React.CSSProperties => ({ '--w':   w   } as React.CSSProperties)
 
+  // ── Agency phases data ──────────────────────────────────────────────
+  const phases = [
+    { num:'01', name:'Digital Audit & Strategy Report',
+      price:'$500 – $750',
+      desc:'We perform a hands-on expert analysis of your website performance, Google ranking, every local competitor, and your full social media presence — then deliver a prioritized, plain-English roadmap.',
+      why:'Why we\'re different: agencies charge $1,500–$2,500 for a generic scan. We deliver a bespoke roadmap for less than half the cost.' },
+    { num:'02', name:'Design & Interactive Prototype',
+      price:'$800 – $1,200',
+      desc:'We collaborate on your complete visual identity — full color palette, typography system, feature list, and page-by-page user journey. Then we build a fully interactive browser preview with your real brand, photos, and content in place. Two revision rounds included.',
+      why:'Why it matters: prototyping first eliminates costly mid-build changes and gives you full creative control before a line of production code is written.' },
+    { num:'03', name:'Full Custom Development',
+      price:'$3,500 – $4,750',
+      desc:'100% custom — no templates, no page builders, no WordPress. We build in Next.js with hand-crafted CSS that makes your site load fast and look pixel-perfect on every device. Booking integrations, contact forms, Facebook Pixel, and Google Analytics 4 all wired in from day one.',
+      why:'Why it matters: custom-built sites rank better, load faster, and convert more than any template — and they look like nothing else in your market.' },
+    { num:'04', name:'SEO Foundation',
+      price:'$600 – $900',
+      desc:'92% of Google users never click past page 1 — and the top 3 results capture over 68% of all clicks. We hand-craft custom page titles, meta descriptions, and structured schema data for every page so Google finds, trusts, and ranks your site.',
+      why:'Why we\'re different: most platforms auto-generate weak, generic SEO tags. We write keyword-researched copy for every single page — the difference between page 1 and page 5.' },
+    { num:'05', name:'Facebook & Instagram Ads Setup',
+      price:'$400 – $600',
+      desc:'Full Meta Ads infrastructure: Business Manager, Pixel, custom audiences, 2–3 ad creatives written and designed for your exact customer, full campaign launch, and a plain-English handoff guide. Pixel retargeting delivers up to 3× higher conversion vs. cold ads.',
+      why:'Why it matters: we build audiences around your specific customers by location, age, income, and interests — not broad demographic guesses.' },
+  ]
+
   return (
     <>
       {/* Mobile menu */}
@@ -441,10 +456,8 @@ export default function Home() {
               <div className="div-icon-wrap">
                 <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.2" strokeLinecap="round" stroke="currentColor">
                   <circle cx="12" cy="12" r="3"/>
-                  <circle cx="4"  cy="6"  r="2"/>
-                  <circle cx="20" cy="6"  r="2"/>
-                  <circle cx="4"  cy="18" r="2"/>
-                  <circle cx="20" cy="18" r="2"/>
+                  <circle cx="4"  cy="6"  r="2"/><circle cx="20" cy="6"  r="2"/>
+                  <circle cx="4"  cy="18" r="2"/><circle cx="20" cy="18" r="2"/>
                   <line x1="6"  y1="7"  x2="10" y2="10"/>
                   <line x1="18" y1="7"  x2="14" y2="10"/>
                   <line x1="6"  y1="17" x2="10" y2="14"/>
@@ -601,25 +614,11 @@ export default function Home() {
       <section id="digital" className="s-pad">
         <div className="max-w">
           <div className="agency-layout">
+
+            {/* Phases — right column */}
             <div className="reveal" style={{ order:1 }}>
               <div className="phases-wrap">
-                {[
-                  { num:'01', name:'Digital Audit & Strategy Report',  price:'$500–$750',
-                    desc:'We perform a hands-on expert analysis of your website performance, Google ranking, every local competitor, and your full social media presence — then deliver a prioritized, plain-English roadmap.',
-                    why:'Why we\'re different: agencies charge $1,500–$2,500 for a generic scan. We deliver a bespoke roadmap for less than half the cost.' },
-                  { num:'02', name:'Design & Interactive Prototype',   price:'$800–$1,200',
-                    desc:'We collaborate on your complete visual identity — full color palette, typography system, feature list, and page-by-page user journey. Then we build a fully interactive browser preview with your real brand, photos, and content in place. Two revision rounds included.',
-                    why:'Why it matters: prototyping first eliminates costly mid-build changes and gives you full creative control before costs escalate.' },
-                  { num:'03', name:'Full Custom Development',          price:'$2,500–$3,500',
-                    desc:'100% custom — no templates, no page builders, no WordPress. We build in Next.js with hand-crafted CSS that makes your site load fast and look pixel-perfect on every device. Booking integrations, contact forms, Facebook Pixel, and Google Analytics 4 all wired in from day one.',
-                    why:'Why it matters: custom-built sites rank better, load faster, and convert more than any template — and they look like nothing else in your market.' },
-                  { num:'04', name:'SEO Foundation',                  price:'$600–$900',
-                    desc:'92% of Google users never click past page 1 — and the top 3 results capture over 68% of all clicks. We hand-craft custom page titles, meta descriptions, and structured schema data for every page so Google finds, trusts, and ranks your site.',
-                    why:'Why we\'re different: most platforms auto-generate weak, generic SEO tags. We write keyword-researched copy for every single page.' },
-                  { num:'05', name:'Facebook & Instagram Ads Setup',   price:'$400–$600',
-                    desc:'Full Meta Ads infrastructure: Business Manager, Pixel, custom audiences, 2–3 ad creatives written and designed for your exact customer, full campaign launch, and a plain-English handoff guide. Pixel retargeting delivers up to 3× higher conversion vs. cold ads.',
-                    why:'Why it matters: we build audiences around your specific customers by location, age, income, and interests — not broad demographic guesses.' },
-                ].map(p => (
+                {phases.map(p => (
                   <div key={p.num} className="phase-row">
                     <div className="phase-header">
                       <span className="phase-num">{p.num}</span>
@@ -628,17 +627,25 @@ export default function Home() {
                     </div>
                     <div className="phase-detail">
                       {p.desc}
-                      <div className="phase-why">{p.why}</div>
+                      {/* ↓ phase-why bumped to cream-2 so it reads as copy, not footnote */}
+                      <div className="phase-why" style={{ color:'var(--cream-2)' }}>{p.why}</div>
                     </div>
                   </div>
                 ))}
               </div>
+
+              {/* Total — updated ranges + green savings */}
               <div className="agency-total">
                 <div className="at-label">Total Project Investment</div>
-                <div className="at-num">$4,800 – $6,950</div>
-                <div className="at-sub">Agency equivalent: $11,000–$20,000 · You save 50%+</div>
+                <div className="at-num">$5,800 – $8,200</div>
+                <div className="at-sub">
+                  Agency equivalent: $13,000–$22,000 ·{' '}
+                  <span style={{ color:'#86C878', fontWeight:400 }}>You save 50%+</span>
+                </div>
               </div>
             </div>
+
+            {/* Copy — left column */}
             <div style={{ order:0 }}>
               <div className="s-eye reveal">Division 02 — Bespoke Digital Agency</div>
               <h2 className="s-h2 reveal">Built to your<br/><em>exact vision.</em><br/>Not a template.</h2>
