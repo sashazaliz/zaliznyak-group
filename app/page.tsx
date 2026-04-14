@@ -76,24 +76,39 @@ function useWaveGrid(canvasRef: React.RefObject<HTMLCanvasElement | null>, wrapR
         }
       }
 
-      // Dots — amplitude-driven pulse
-      for (let xi = 0; xi <= COLS; xi++) {
-        for (let yi = 0; yi <= ROWS; yi++) {
-          const { px, py, edgeAlpha, waveAmp } = pts[xi][yi]
-          if (edgeAlpha < 0.05) continue
-          const dotBrightness = 0.45 + waveAmp * 1.85
-          const dotAlpha = Math.min(1, edgeAlpha * dotBrightness)
-          const dotSize  = 0.8 + waveAmp * 2.2
-          ctx.beginPath(); ctx.arc(px, py, dotSize, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(212,174,120,${dotAlpha.toFixed(3)})`
-          ctx.fill()
-          if (waveAmp > 0.65 && edgeAlpha > 0.2) {
-            ctx.beginPath(); ctx.arc(px, py, dotSize * 2.5, 0, Math.PI * 2)
-            ctx.fillStyle = `rgba(196,150,90,${(edgeAlpha * waveAmp * 0.18).toFixed(3)})`
-            ctx.fill()
-          }
-        }
-      }
+      // Dots — sequential right-to-left sweep
+// sweepX moves from COLS → 0 over ~10 seconds, then resets
+const SWEEP_PERIOD = 70  // t units for one full right→left pass
+const sweepX = COLS * (1 - (t % SWEEP_PERIOD) / SWEEP_PERIOD)
+const FALLOFF = 3.5      // columns of glow width on each side
+
+for (let xi = 0; xi <= COLS; xi++) {
+  for (let yi = 0; yi <= ROWS; yi++) {
+    const { px, py, edgeAlpha } = pts[xi][yi]
+    if (edgeAlpha < 0.04) continue
+
+    // How close is this column to the current sweep position
+    const dist = Math.abs(xi - sweepX)
+    const sweep = Math.max(0, 1 - dist / FALLOFF)
+
+    // Base dim dot always present, sweeps to bright as wave passes
+    const dotAlpha = Math.min(1, edgeAlpha * (0.18 + sweep * 2.2))
+    const dotSize  = 0.7 + sweep * 2.4
+
+    ctx.beginPath()
+    ctx.arc(px, py, dotSize, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(212,174,120,${dotAlpha.toFixed(3)})`
+    ctx.fill()
+
+    // Soft glow halo at the sweep front
+    if (sweep > 0.4 && edgeAlpha > 0.15) {
+      ctx.beginPath()
+      ctx.arc(px, py, dotSize * 2.8, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(196,150,90,${(edgeAlpha * sweep * 0.15).toFixed(3)})`
+      ctx.fill()
+    }
+  }
+}
 
       t += 0.007
       animId = requestAnimationFrame(draw)
@@ -322,24 +337,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Ticker */}
-          <div className="hero-ticker">
-            <div className="hero-ticker-track">
-              {[...Array(2)].flatMap(() => [
-                <span key={`oa-${Math.random()}`} className="hero-ticker-item">OptionsAnalytx</span>,
-                <span key={`s1-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-                <span key={`c-${Math.random()}`}  className="hero-ticker-item">96,208 Contracts Analyzed</span>,
-                <span key={`s2-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-                <span key={`w-${Math.random()}`}  className="hero-ticker-item">93.2% A+ Win Rate</span>,
-                <span key={`s3-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-                <span key={`t-${Math.random()}`}  className="hero-ticker-item">Zero Templates. Ever.</span>,
-                <span key={`s4-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-                <span key={`p-${Math.random()}`}  className="hero-ticker-item">50%+ Below Agency Rates</span>,
-                <span key={`s5-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-                <span key={`sd-${Math.random()}`} className="hero-ticker-item">San Diego, California</span>,
-                <span key={`s6-${Math.random()}`} className="hero-ticker-sep">◆</span>,
-              ])}
-            </div>
           </div>
         </section>
       </div>

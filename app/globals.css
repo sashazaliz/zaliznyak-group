@@ -56,10 +56,6 @@ button { cursor:pointer; border:none; background:none; font-family:var(--sans) }
 @keyframes breathe {
   0%,100% { opacity:1 } 50% { opacity:0.25 }
 }
-@keyframes ticker {
-  from { transform:translateX(0) }
-  to   { transform:translateX(-50%) }
-}
 
 /* ═══════════════════════════════════════════
    WAVE CANVAS WRAPPER
@@ -203,19 +199,7 @@ nav.scrolled {
   padding-bottom:2px; transition:all 0.25s;
 }
 .btn-text:hover { color:var(--gold); border-bottom-color:var(--gold) }
-.hero-ticker {
-  position:absolute; bottom:2rem; left:0; right:0;
-  overflow:hidden; height:22px; z-index:3;
-}
-.hero-ticker-track {
-  display:flex; white-space:nowrap;
-  animation:ticker 28s linear infinite;
-  font-family:var(--mono); font-size:0.6rem;
-  letter-spacing:0.2em; text-transform:uppercase;
-  color:var(--cream-2); line-height:22px;
-}
-.hero-ticker-item { padding:0 2.5rem }
-.hero-ticker-sep { color:var(--gold); margin:0 0.5rem }
+
 
 /* ═══════════════════════════════════════════
    METRICS
