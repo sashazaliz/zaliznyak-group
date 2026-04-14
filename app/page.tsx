@@ -335,8 +335,8 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="nav-contact"
-          onClick={e => { e.preventDefault(); scrollTo('contact') }}>
+        <a href="https://calendly.com/zaliznyakgroup-info/new-meeting"
+          target="_blank" rel="noopener noreferrer" className="nav-contact">
           Start a Project
         </a>
         <button className="nav-toggle" onClick={() => setMobOpen(true)}>
@@ -758,7 +758,10 @@ export default function Home() {
             info@zaliznyakgroup.com
           </a>
           <div className="contact-actions">
-            <a href="mailto:info@zaliznyakgroup.com" className="btn-primary"><span>Send a Message</span></a>
+            <a href="https://calendly.com/zaliznyakgroup-info/new-meeting"
+              target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <span>Start a Project</span>
+            </a>
             <a href="tel:8582810071" className="btn-text">(858) 281-0071</a>
           </div>
         </div>
