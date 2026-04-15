@@ -42,7 +42,7 @@ function useWaveGrid(
         pts[xi] = []
         for (let yi = 0; yi <= ROWS; yi++) {
           const bx = xi * cw, by = yi * ch
-          const scale = Math.min(1, W / 2000)   // 1.0 at 900px+, scales down on mobile
+          const scale = Math.min(1, W / 2000)
           const w1 = Math.sin(xi * 0.45 + t * 0.55) * 11 * scale
           const w2 = Math.cos(yi * 0.38 + t * 0.42) * 9  * scale
           const w3 = Math.sin((xi + yi) * 0.3 + t * 0.28) * 5  * scale
@@ -116,10 +116,10 @@ function useWaveGrid(
 }
 
 /* ═══════════════════════════════════════════
-   COUNTER HOOK
+   COUNTER HOOK — supports decimals
 ═══════════════════════════════════════════ */
-function useCountUp(target: number, suffix: string, isVisible: boolean) {
-  const [display, setDisplay] = useState('0' + suffix)
+function useCountUp(target: number, suffix: string, isVisible: boolean, decimals = 0) {
+  const [display, setDisplay] = useState((decimals > 0 ? (0).toFixed(decimals) : '0') + suffix)
   useEffect(() => {
     if (!isVisible) return
     const duration = 2200
@@ -127,11 +127,14 @@ function useCountUp(target: number, suffix: string, isVisible: boolean) {
     function step(now: number) {
       const p    = Math.min((now - start) / duration, 1)
       const ease = 1 - Math.pow(1 - p, 3)
-      setDisplay(Math.round(target * ease).toLocaleString() + suffix)
+      const val  = target * ease
+      setDisplay(
+        (decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString()) + suffix
+      )
       if (p < 1) requestAnimationFrame(step)
     }
     requestAnimationFrame(step)
-  }, [isVisible, target, suffix])
+  }, [isVisible, target, suffix, decimals])
   return display
 }
 
@@ -172,30 +175,29 @@ function useReveal() {
 }
 
 /* ═══════════════════════════════════════════
-   METRIC CELL
+   OA STAT CELL — animated count-up
 ═══════════════════════════════════════════ */
-function MetricCell({ target, suffix, label, sub, delay }: {
-  target: number; suffix: string; label: string; sub: string; delay: string
+function OaStatCell({ target, suffix, label, decimals = 0 }: {
+  target: number; suffix: string; label: string; decimals?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
-  const display = useCountUp(target, suffix, visible)
+  const display = useCountUp(target, suffix, visible, decimals)
 
   useEffect(() => {
     const el = ref.current; if (!el) return
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); el.classList.add('animated') } },
-      { threshold: 0.3 }
+      ([e]) => { if (e.isIntersecting) setVisible(true) },
+      { threshold: 0.4 }
     )
     io.observe(el)
     return () => io.disconnect()
   }, [])
 
   return (
-    <div className="metric-cell reveal" ref={ref} style={{ transitionDelay: delay }}>
-      <div className="metric-num">{display}</div>
-      <div className="metric-lbl">{label}</div>
-      <div className="metric-sub">{sub}</div>
+    <div className="oa-stat" ref={ref}>
+      <div className="oa-stat-num">{display}</div>
+      <div className="oa-stat-lbl">{label}</div>
     </div>
   )
 }
@@ -277,11 +279,11 @@ export default function Home() {
   }, [])
 
   const scrollTo = (id: string) => {
-  setMobOpen(false)
-  setTimeout(() => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }, 50)
-}
+    setMobOpen(false)
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }, 50)
+  }
 
   const factorStyle = (pct: number): React.CSSProperties => ({ '--pct': pct } as React.CSSProperties)
   const cfStyle     = (p: number):   React.CSSProperties => ({ '--p':   p   } as React.CSSProperties)
@@ -381,16 +383,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      {/* ═══ METRICS ═══ */}
-      <section id="metrics">
-        <div className="metrics-inner">
-          <MetricCell target={96208} suffix=""    label="Contracts Backtested"  sub="OptionsAnalytx · 488 symbols · 2018–2025"  delay="0s"/>
-          <MetricCell target={93}    suffix=".2%" label="A+ Grade Win Rate"     sub="9-factor Smart Score · Validated"           delay="0.07s"/>
-          <MetricCell target={50}    suffix="%+"  label="Below Agency Rates"    sub="Agency quality · Founder-level attention"   delay="0.14s"/>
-          <MetricCell target={100}   suffix="%"   label="Custom — No Templates" sub="Every project built from the ground up"     delay="0.21s"/>
-        </div>
-      </section>
 
       {/* ═══ DIVISIONS ═══ */}
       <section id="divisions" className="s-pad">
@@ -506,11 +498,14 @@ export default function Home() {
                 against 96,208 real contracts across 7 years of market data. Every factor weight is
                 derived from outcome correlation, not intuition.
               </p>
+
+              {/* ── Animated stats — count up on scroll ── */}
               <div className="oa-stats-row reveal">
-                <div className="oa-stat"><div className="oa-stat-num">93.2%</div><div className="oa-stat-lbl">A+ Win Rate</div></div>
-                <div className="oa-stat"><div className="oa-stat-num">86.1%</div><div className="oa-stat-lbl">A/A+ Combined</div></div>
-                <div className="oa-stat"><div className="oa-stat-num">96,208</div><div className="oa-stat-lbl">Contracts Tested</div></div>
+                <OaStatCell target={93.2}  suffix="%" label="A+ Win Rate"       decimals={1} />
+                <OaStatCell target={86.1}  suffix="%" label="A/A+ Combined"     decimals={1} />
+                <OaStatCell target={96208} suffix=""  label="Contracts Tested"               />
               </div>
+
               <div className="factor-section reveal">
                 <div className="factor-section-title">9-Factor Smart Score — Algorithm Weight Distribution</div>
                 <div className="factor-list" id="factorList">
@@ -630,14 +625,12 @@ export default function Home() {
                     </div>
                     <div className="phase-detail">
                       {p.desc}
-                      {/* ↓ phase-why bumped to cream-2 so it reads as copy, not footnote */}
-                      <div className="phase-why" style={{ color:'var(--cream-2)' }}>{p.why}</div>
+                      <div className="phase-why">{p.why}</div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Total — updated ranges + green savings */}
               <div className="agency-total">
                 <div className="at-label">Total Project Investment</div>
                 <div className="at-num">$5,800 – $8,200</div>
