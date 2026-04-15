@@ -292,11 +292,11 @@ export default function Home() {
   // ── Agency phases data ──────────────────────────────────────────────
   const phases = [
     { num:'01', name:'Digital Audit & Strategy Report',
-      price:'$500 – $750',
+      price:'$650',
       desc:'We perform a hands-on expert analysis of your website performance, Google ranking, every local competitor, and your full social media presence — then deliver a prioritized, plain-English roadmap.',
       why:'Why we\'re different: agencies charge $1,500–$2,500 for a generic scan. We deliver a bespoke roadmap for less than half the cost.' },
     { num:'02', name:'Design & Interactive Prototype',
-      price:'$800 – $1,200',
+      price:'$950 – $1,100',
       desc:'We collaborate on your complete visual identity — full color palette, typography system, feature list, and page-by-page user journey. Then we build a fully interactive browser preview with your real brand, photos, and content in place. Two revision rounds included.',
       why:'Why it matters: prototyping first eliminates costly mid-build changes and gives you full creative control before a line of production code is written.' },
     { num:'03', name:'Full Custom Development',
@@ -304,11 +304,11 @@ export default function Home() {
       desc:'100% custom — no templates, no page builders, no WordPress. We build in Next.js with hand-crafted CSS that makes your site load fast and look pixel-perfect on every device. Booking integrations, contact forms, Facebook Pixel, and Google Analytics 4 all wired in from day one.',
       why:'Why it matters: custom-built sites rank better, load faster, and convert more than any template — and they look like nothing else in your market.' },
     { num:'04', name:'SEO Foundation',
-      price:'$600 – $900',
+      price:'$700 – $800',
       desc:'92% of Google users never click past page 1 — and the top 3 results capture over 68% of all clicks. We hand-craft custom page titles, meta descriptions, and structured schema data for every page so Google finds, trusts, and ranks your site.',
       why:'Why we\'re different: most platforms auto-generate weak, generic SEO tags. We write keyword-researched copy for every single page — the difference between page 1 and page 5.' },
     { num:'05', name:'Facebook & Instagram Ads Setup',
-      price:'$400 – $600',
+      price:'$500',
       desc:'Full Meta Ads infrastructure: Business Manager, Pixel, custom audiences, 2–3 ad creatives written and designed for your exact customer, full campaign launch, and a plain-English handoff guide. Pixel retargeting delivers up to 3× higher conversion vs. cold ads.',
       why:'Why it matters: we build audiences around your specific customers by location, age, income, and interests — not broad demographic guesses.' },
   ]
@@ -340,10 +340,9 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <a href="https://calendly.com/zaliznyakgroup-info/new-meeting"
-          target="_blank" rel="noopener noreferrer" className="nav-contact">
-          Start a Project
-        </a>
+        <Link href="/start" className="nav-contact">
+         Start a Project
+        </Link>
         <button className="nav-toggle" onClick={() => setMobOpen(true)}>
           <span/><span/><span/>
         </button>
@@ -633,9 +632,9 @@ export default function Home() {
 
               <div className="agency-total">
                 <div className="at-label">Total Project Investment</div>
-                <div className="at-num">$5,800 – $8,200</div>
+                <div className="at-num">$5,600 – $6,600</div>
                 <div className="at-sub">
-                  Agency equivalent: $13,000–$22,000 ·{' '}
+                  Agency equivalent: $12,000–$22,000 ·{' '}
                   <span style={{ color:'#86C878', fontWeight:400 }}>You save 50%+</span>
                 </div>
               </div>
@@ -754,10 +753,9 @@ export default function Home() {
             info@zaliznyakgroup.com
           </a>
           <div className="contact-actions">
-            <a href="https://calendly.com/zaliznyakgroup-info/new-meeting"
-              target="_blank" rel="noopener noreferrer" className="btn-primary">
-              <span>Start a Project</span>
-            </a>
+            <Link href="/start" className="btn-primary">
+            <span>Start a Project</span>
+            </Link>
             <a href="tel:8582810071" className="btn-text">(858) 281-0071</a>
           </div>
         </div>
