@@ -406,16 +406,14 @@ export default function Home() {
                   <polyline points="7,12 10,15 17,9" stroke="currentColor"/>
                 </svg>
               </div>
-              <div className="div-name">AI Financial Tools</div>
-              <div className="div-tag">Fintech · Quantitative Analysis</div>
-              <p className="div-desc">Proprietary algorithms that rank, score, and surface
-                high-probability trades — built on real backtested data across 96,208 contracts.
-                The only screener that ranks instead of filters.</p>
-              <div className="div-items">
-                {['OptionsAnalytx — Live Production SaaS','9-Factor Smart Score Algorithm',
-                  '96,208 Contracts · 488 Symbols · 7 Years','New Financial Verticals In Development'
-                ].map(i => <span key={i} className="div-item">{i}</span>)}
-              </div>
+              <div className="div-name">Proprietary AI Algorithms</div>
+             <div className="div-tag">Fintech · Real Estate · Sports · Healthcare</div>
+            <p className="div-desc">Deterministic, data-driven algorithms that replace guesswork with ranked, scored decisions — validated against real historical data across multiple verticals. Built to find the signal in any complex market.</p>
+            <div className="div-items">
+           {['OptionsAnalytx — Live Fintech SaaS','Real Estate Opportunity Scoring',
+            'Sports Analytics & Predictive Models','Healthcare & New Verticals In Development'
+            ].map(i => <span key={i} className="div-item">{i}</span>)}
+           </div>
               <a href="#ai-tools" className="div-link"
                 onClick={e => { e.preventDefault(); scrollTo('ai-tools') }}>Explore Division →</a>
             </div>
