@@ -5,12 +5,11 @@ module.exports = {
   sitemapSize: 7000,
   changefreq: 'weekly',
   priority: 0.7,
+  exclude: ['/start'],   // intake form — exclude from sitemap
   robotsTxtOptions: {
     policies: [
       { userAgent: '*', allow: '/' },
-    ],
-    additionalSitemaps: [
-      'https://zaliznyakgroup.com/sitemap.xml',
+      { userAgent: '*', disallow: '/start' },
     ],
   },
 }
