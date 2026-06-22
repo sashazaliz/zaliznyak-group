@@ -1,25 +1,24 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Outfit, DM_Mono } from 'next/font/google'
-import Script from 'next/script'
+import { Newsreader, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 // ── Google Fonts (next/font — self-hosted, zero CLS) ──────────────
-const cormorant = Cormorant_Garamond({
+const newsreader = Newsreader({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
   display: 'swap',
 })
-const outfit = Outfit({
+const interTight = Inter_Tight({
   subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap',
 })
-const dmMono = DM_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500'],
   variable: '--font-mono',
   display: 'swap',
 })
@@ -29,48 +28,48 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://zaliznyakgroup.com'),
 
   title: {
-    default: 'The Zaliznyak Group — AI Tools · Digital Agency · Automation | San Diego',
-    template: '%s | The Zaliznyak Group',
+    default: 'Zaliznyak Group: Analytics, AI, and Decision Systems',
+    template: '%s | Zaliznyak Group',
   },
 
   description:
-    'The Zaliznyak Group builds AI-powered financial tools, bespoke custom websites, and intelligent business automation for founders who demand precision. San Diego, CA. Zero templates. No compromise.',
+    'An independent practice applying AI/ML, analytics, and decision systems to commercial and operational problems. Built on years leading commercial analytics in life sciences.',
 
   keywords: [
-    'web design San Diego',
-    'custom website development San Diego',
-    'Next.js web development San Diego',
-    'bespoke digital agency San Diego',
-    'small business website San Diego',
-    'covered call screener',
-    'OptionsAnalytx',
-    'options trading algorithm',
-    'AI automation small business',
-    'Facebook ads setup San Diego',
-    'SEO San Diego small business',
-    'The Zaliznyak Group',
+    'commercial analytics consulting',
+    'AI agents and automation',
+    'decision systems',
+    'predictive modeling',
+    'KPI frameworks',
+    'patient journey analytics',
+    'machine learning consulting',
+    'go-to-market advisory',
+    'data strategy',
+    'life sciences analytics',
+    'Alex Zaliznyak',
+    'Zaliznyak Group',
   ],
 
   authors: [{ name: 'Alex Zaliznyak', url: 'https://zaliznyakgroup.com' }],
 
-  creator: 'The Zaliznyak Group, LLC',
-  publisher: 'The Zaliznyak Group, LLC',
+  creator: 'Zaliznyak Group, LLC',
+  publisher: 'Zaliznyak Group, LLC',
 
   // ── Open Graph ─────────────────────────────────────────────────
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://zaliznyakgroup.com',
-    siteName: 'The Zaliznyak Group',
-    title: 'The Zaliznyak Group — AI Tools · Digital Agency · Automation',
+    siteName: 'Zaliznyak Group',
+    title: 'Zaliznyak Group: Analytics, AI, and Decision Systems',
     description:
-      'AI-powered financial tools, bespoke custom websites, and intelligent business automation. Built for founders who demand precision. San Diego, CA.',
+      'An independent practice applying AI/ML, analytics, and decision systems to commercial and operational problems. San Diego, CA.',
     images: [
       {
-        url: '/og-image.jpg',        // 1200×630 — place in /public
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'The Zaliznyak Group — AI Tools, Digital Agency, Automation',
+        alt: 'Zaliznyak Group: Analytics, AI, and Decision Systems',
       },
     ],
   },
@@ -78,9 +77,9 @@ export const metadata: Metadata = {
   // ── Twitter / X Card ──────────────────────────────────────────
   twitter: {
     card: 'summary_large_image',
-    title: 'The Zaliznyak Group — AI Tools · Digital Agency · Automation',
+    title: 'Zaliznyak Group: Analytics, AI, and Decision Systems',
     description:
-      'AI-powered financial tools, bespoke custom websites, and intelligent automation. San Diego, CA.',
+      'Analytics, AI, and decision systems that turn data into outcomes.',
     images: ['/og-image.jpg'],
   },
 
@@ -99,26 +98,22 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
-  // ── Verification (fill in once Search Console is set up) ───────
-  // verification: {
-  //   google: 'YOUR_GOOGLE_VERIFICATION_TOKEN',
-  // },
 }
 
 // ── JSON-LD Structured Data ───────────────────────────────────────
+// Note: OptionsAnalytx SoftwareApplication schema removed entirely.
+// The product lives at optionsanalytx.com and its own schema belongs there.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    // Local Business
+    // Professional Service (replaces LocalBusiness — fits an independent consulting practice better)
     {
-      '@type': 'LocalBusiness',
+      '@type': 'ProfessionalService',
       '@id': 'https://zaliznyakgroup.com/#business',
-      name: 'The Zaliznyak Group, LLC',
+      name: 'Zaliznyak Group, LLC',
       description:
-        'AI-powered financial tools, bespoke digital agency, and intelligent business automation for founders who demand precision.',
+        'An independent practice applying AI/ML, analytics, and decision systems to commercial and operational problems. Built on years leading commercial analytics in life sciences.',
       url: 'https://zaliznyakgroup.com',
-      telephone: '+1-858-281-0071',
       email: 'info@zaliznyakgroup.com',
       address: {
         '@type': 'PostalAddress',
@@ -126,62 +121,50 @@ const jsonLd = {
         addressRegion: 'CA',
         addressCountry: 'US',
       },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 32.7157,
-        longitude: -117.1611,
-      },
-      areaServed: [
-        { '@type': 'City', name: 'San Diego' },
-        { '@type': 'State', name: 'California' },
-        { '@type': 'Country', name: 'United States' },
-      ],
-      priceRange: '$$$',
-      openingHours: 'Mo-Fr 09:00-17:00',
+      areaServed: { '@type': 'Country', name: 'United States' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Digital Services',
+        name: 'Services',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Audit & Strategy Report', description: 'Comprehensive website and competitive analysis with actionable roadmap.' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Website Design & Development', description: 'Zero-template Next.js website built to exact client specifications.' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO Foundation', description: 'Custom metadata, schema markup, and Search Console setup for Google page 1 rankings.' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Facebook & Instagram Ads Setup', description: 'Complete Meta Ads infrastructure with Pixel, custom audiences, and creative.' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Business Automation', description: 'AI-powered workflow automation for lead response, proposal generation, and client onboarding.' } },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Commercial Analytics & Decision Systems',
+              description:
+                'KPI frameworks, customer and patient journey analytics, forecasting, segmentation, and predictive modeling. Go-to-market and operations advisory for early-stage companies.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'AI Agents & Automation',
+              description:
+                'Custom AI agents and automated workflows that remove manual work and accelerate teams. Machine learning and large language models integrated into real business processes.',
+            },
+          },
         ],
       },
-    },
-    // Software Application — OptionsAnalytx
-    {
-      '@type': 'SoftwareApplication',
-      '@id': 'https://optionsanalytx.com/#app',
-      name: 'OptionsAnalytx',
-      applicationCategory: 'FinanceApplication',
-      operatingSystem: 'Web',
-      url: 'https://optionsanalytx.com',
-      description:
-        'AI-powered covered call screener that ranks every opportunity using a proprietary 9-factor Smart Score algorithm. Backtested across 96,208 real contracts, 488 symbols, 2018–2025.',
-      creator: { '@id': 'https://zaliznyakgroup.com/#business' },
-      offers: [
-        { '@type': 'Offer', name: 'Free Tier', price: '0', priceCurrency: 'USD' },
-        { '@type': 'Offer', name: 'Pro', price: '39', priceCurrency: 'USD', billingIncrement: 'P1M' },
-        { '@type': 'Offer', name: 'Pro Plus', price: '59', priceCurrency: 'USD', billingIncrement: 'P1M' },
-      ],
     },
     // Person — Alex Zaliznyak
     {
       '@type': 'Person',
       '@id': 'https://zaliznyakgroup.com/#founder',
       name: 'Alex Zaliznyak',
-      jobTitle: 'Founder',
+      jobTitle: 'Founder and Principal',
       worksFor: { '@id': 'https://zaliznyakgroup.com/#business' },
+      sameAs: ['https://linkedin.com/in/alex-zaliznyak'],
       knowsAbout: [
-        'Options Trading',
-        'Covered Call Strategies',
-        'Web Development',
-        'Digital Marketing',
-        'AI Automation',
-        'Next.js',
-        'SEO',
+        'Commercial Analytics',
+        'KPI Frameworks',
+        'Patient Journey Analytics',
+        'Predictive Modeling',
+        'Machine Learning',
+        'AI Agents and Automation',
+        'Go-to-Market Strategy',
+        'Decision Support Systems',
+        'Life Sciences Commercial Operations',
       ],
     },
     // Website
@@ -189,7 +172,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': 'https://zaliznyakgroup.com/#website',
       url: 'https://zaliznyakgroup.com',
-      name: 'The Zaliznyak Group',
+      name: 'Zaliznyak Group',
       publisher: { '@id': 'https://zaliznyakgroup.com/#business' },
     },
   ],
@@ -200,30 +183,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${outfit.variable} ${dmMono.variable}`}
+      className={`${newsreader.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        {/* JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
-        {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Y67LRLSKMT"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Y67LRLSKMT');
-          `}
-        </Script>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
