@@ -7,19 +7,35 @@ import { useEffect, useState } from 'react'
    Applied Patterns for AI Agents · Zaliznyak Group
 ═══════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════
+   STICKY NAV BORDER ON SCROLL
+   Same hook the homepage uses, for consistency.
+═══════════════════════════════════════════ */
+function useNavScroll() {
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return scrolled
+}
+
 const PATTERNS = [
-  { id: 'pattern-01', label: '01 · Inbound' },
-  { id: 'pattern-02', label: '02 · Reporting' },
-  { id: 'pattern-03', label: '03 · Research' },
+  { id: 'pattern-01', label: '01 · Inbound Response' },
+  { id: 'pattern-02', label: '02 · Reporting & Update' },
+  { id: 'pattern-03', label: '03 · Research & Monitoring' },
   { id: 'pattern-04', label: '04 · Meeting Notes' },
-  { id: 'pattern-05', label: '05 · Status' },
+  { id: 'pattern-05', label: '05 · Project Status' },
   { id: 'pattern-06', label: '06 · Sales Follow-Up' },
-  { id: 'pattern-07', label: '07 · Knowledge' },
+  { id: 'pattern-07', label: '07 · Onboarding & Knowledge' },
 ]
 
 export default function AgentsPage() {
   const [activePattern, setActivePattern] = useState('pattern-01')
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const scrolled = useNavScroll()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,6 +74,24 @@ export default function AgentsPage() {
 
   return (
     <>
+      {/* ═══ SITE NAV ═══ */}
+      <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+        <div className="max-w nav-inner">
+          <a href="/" className="nav-mark">
+            <span className="nav-mark-text">
+              Zaliznyak Group
+              <small>Independent Practice</small>
+            </span>
+          </a>
+          <div className="nav-links">
+            <a href="/#about" className="nav-link">About</a>
+            <a href="/#services" className="nav-link">Services</a>
+            <a href="/#work" className="nav-link">Work</a>
+            <a href="/#contact" className="nav-link">Contact</a>
+          </div>
+        </div>
+      </nav>
+
       {/* ═══ PAGE HERO ═══ */}
       <section className="agents-hero">
         <div className="max-w">
