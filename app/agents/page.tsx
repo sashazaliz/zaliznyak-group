@@ -533,9 +533,9 @@ export default function AgentsPage() {
                 <text x="810" y="220" textAnchor="middle" fontFamily="Inter Tight" fontSize="10" fill="#8A6F45">Summarize · Rank</text>
 
                 {/* Digest */}
-                <rect x="960" y="180" width="130" height="55" fill="none" stroke="#8A6F45" strokeWidth="1.5"/>
-                <text x="1025" y="203" textAnchor="middle" fontFamily="Inter Tight" fontSize="12" fontWeight="500" fill="#14171C">Digest</text>
-                <text x="1025" y="220" textAnchor="middle" fontFamily="Inter Tight" fontSize="10" fill="#8A6F45">Structured</text>
+                <rect x="945" y="180" width="130" height="55" fill="none" stroke="#8A6F45" strokeWidth="1.5"/>
+                <text x="1010" y="203" textAnchor="middle" fontFamily="Inter Tight" fontSize="12" fontWeight="500" fill="#14171C">Digest</text>
+                <text x="1010" y="220" textAnchor="middle" fontFamily="Inter Tight" fontSize="10" fill="#8A6F45">Structured</text>
 
                 {/* Arrows: sources → fetcher */}
                 <path d="M 140 73 Q 200 130 258 195" fill="none" stroke="#3F5C6B" strokeWidth="1.5" markerEnd="url(#arr-teal-3)"/>
@@ -548,18 +548,18 @@ export default function AgentsPage() {
                 <line x1="430" y1="208" x2="525" y2="215" stroke="#14171C" strokeWidth="1.5" markerEnd="url(#arr-ink-3)"/>
                 <line x1="620" y1="205" x2="715" y2="205" stroke="#8A6F45" strokeWidth="2" markerEnd="url(#arr-gold-3)"/>
                 <text x="665" y="195" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" letterSpacing="1" fill="#8A6F45" fontWeight="500">RELEVANT</text>
-                <line x1="900" y1="207" x2="955" y2="207" stroke="#8A6F45" strokeWidth="2" markerEnd="url(#arr-gold-3)"/>
+                <line x1="900" y1="207" x2="940" y2="207" stroke="#8A6F45" strokeWidth="2" markerEnd="url(#arr-gold-3)"/>
 
                 {/* Discard */}
                 <line x1="575" y1="276" x2="575" y2="330" stroke="#6E7079" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#arr-ink-3)"/>
                 <text x="585" y="350" fontFamily="JetBrains Mono" fontSize="9" letterSpacing="1" fill="#6E7079">DISCARD</text>
 
                 {/* Team readers */}
-                <ellipse cx="1025" cy="340" rx="80" ry="26" fill="none" stroke="#B86842" strokeWidth="1.5"/>
-                <text x="1025" y="338" textAnchor="middle" fontFamily="Inter Tight" fontSize="11" fontWeight="500" fill="#14171C">Team members</text>
-                <text x="1025" y="353" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" letterSpacing="1" fill="#B86842">READERS</text>
+                <ellipse cx="1010" cy="340" rx="80" ry="26" fill="none" stroke="#B86842" strokeWidth="1.5"/>
+                <text x="1010" y="338" textAnchor="middle" fontFamily="Inter Tight" fontSize="11" fontWeight="500" fill="#14171C">Team members</text>
+                <text x="1010" y="353" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" letterSpacing="1" fill="#B86842">READERS</text>
 
-                <line x1="1025" y1="235" x2="1025" y2="313" stroke="#B86842" strokeWidth="1.5" markerEnd="url(#arr-terra-3)"/>
+                <line x1="1010" y1="235" x2="1010" y2="313" stroke="#B86842" strokeWidth="1.5" markerEnd="url(#arr-terra-3)"/>
               </svg>
             </div>
 
