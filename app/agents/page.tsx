@@ -86,7 +86,7 @@ export default function AgentsPage() {
           <div className="nav-links">
             <a href="/#about" className="nav-link">About</a>
             <a href="/#services" className="nav-link">Services</a>
-            <a href="/#work" className="nav-link">Work</a>
+            <a href="/work" className="nav-link">Work</a>
             <a href="/#contact" className="nav-link">Contact</a>
           </div>
         </div>

@@ -68,25 +68,38 @@ export default function Page() {
             </span>
           </a>
           <div className="nav-links">
-            {[
-              ['about', 'About'],
-              ['services', 'Services'],
-              ['work', 'Work'],
-              ['contact', 'Contact'],
-            ].map(([id, label]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className="nav-link"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollTo(id)
-                }}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
+  <a
+    href="#about"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault()
+      scrollTo('about')
+    }}
+  >
+    About
+  </a>
+  <a
+    href="#services"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault()
+      scrollTo('services')
+    }}
+  >
+    Services
+  </a>
+  <a href="/work" className="nav-link">Work</a>
+  <a
+    href="#contact"
+    className="nav-link"
+    onClick={(e) => {
+      e.preventDefault()
+      scrollTo('contact')
+    }}
+  >
+    Contact
+  </a>
+</div>
         </div>
       </nav>
 
@@ -125,16 +138,9 @@ export default function Page() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
-            <a
-              href="#work"
-              className="btn-secondary"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollTo('work')
-              }}
-            >
-              See the work
-            </a>
+            <a href="/work" className="btn-secondary">
+  See the work
+</a>
           </div>
           <div className="hero-chips">
             <span className="hero-chip">15+ years in life sciences commercial</span>
@@ -265,153 +271,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ═══ WORK ═══ */}
-      <section id="work" className="section section--alt">
-        <div className="max-w">
-          <div className="section-head reveal">
-            <div className="eyebrow">Work</div>
-            <h2 className="h2">A sample of what I build and advise on.</h2>
-          </div>
-
-          {/* Featured — OptionsAnalytx */}
-          <div className="work-block work-block--featured reveal">
-            <div>
-              <div className="work-eyebrow">Flagship Build · v2.0 July 2026</div>
-              <h3 className="work-name">OptionsAnalytx</h3>
-              <p className="work-body">
-                OptionsAnalytx is a covered call research SaaS I founded and
-                operate solo. It surfaces a weekly Top 10 list of covered call
-                opportunities scored by a gradient boosting machine learning
-                model trained on roughly 1.38 million labeled historical
-                outcomes. Each contract gets a letter grade, A+ through F, plus
-                a per contract explanation, so subscribers can interrogate the
-                reasoning instead of trusting a black box. It is end of day
-                research, not a live trading platform, and it ranks setups
-                rather than recommending trades.
-              </p>
-              <p className="work-body">
-                The product reflects 25 years of personal covered call trading
-                practice, and I built the model, the data pipeline, and the
-                product end to end.
-              </p>
-              <a
-                href="https://optionsanalytx.com"
-                className="work-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit optionsanalytx.com
-                <svg
-                  className="btn-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </a>
-            </div>
-
-            <div className="work-data">
-              <div className="work-data-row">
-                <div className="work-data-label">Category</div>
-                <div className="work-data-value">
-                  Covered call research SaaS. End of day research, not a live
-                  trading platform.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Method</div>
-                <div className="work-data-value">
-                  Gradient boosting machine learning model. Smart Score
-                  composite. Letter grades A+ through F with per contract
-                  explanations.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Dataset</div>
-                <div className="work-data-value">
-                  Research grade backtest on roughly 1.38 million labeled
-                  historical outcomes.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Output</div>
-                <div className="work-data-value">
-                  Weekly Top 10 list. Holding period returns tracked in the
-                  open.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Build</div>
-                <div className="work-data-value">
-                  Solo founder. Built the model, data pipeline, and product
-                  end to end.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Thesis</div>
-                <div className="work-data-value">
-                  Boring is better. Consistent singles beat occasional home
-                  runs.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Stack</div>
-                <div className="work-data-value">
-                  Next.js, TypeScript, Tailwind on Vercel. Python for the
-                  gradient boosting model. Stripe for billing, Kit for email.
-                  Thetadata for institutional options data.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Advisory */}
-          <div className="work-block reveal">
-            <div>
-              <div className="work-eyebrow">Advisory</div>
-              <h3 className="work-name">
-                Go to market and operations for early stage companies.
-              </h3>
-              <p className="work-body">
-                Go to market and operations advisory for early stage companies,
-                including an early stage women&apos;s health startup, plus data
-                driven decision support for local businesses. Engagements are
-                kept small and personal, with direct founder access.
-              </p>
-            </div>
-
-            <div className="work-data">
-              <div className="work-data-row">
-                <div className="work-data-label">Engagement</div>
-                <div className="work-data-value">
-                  Project based or short retainers. Direct work with founders
-                  and operators.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Focus</div>
-                <div className="work-data-value">
-                  Go to market strategy, operations design, and the data
-                  infrastructure that supports both.
-                </div>
-              </div>
-              <div className="work-data-row">
-                <div className="work-data-label">Stage</div>
-                <div className="work-data-value">
-                  Pre seed through early commercial. Where the right system
-                  early compounds into real leverage later.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══ CONTACT ═══ */}
       <section id="contact" className="contact">
