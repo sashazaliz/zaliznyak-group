@@ -1760,3 +1760,6 @@ img, svg { display: block; max-width: 100% }
   color: var(--ink-2);
   max-width: 720px;
 }
+#selected-work {
+  scroll-margin-top: 90px;
+}

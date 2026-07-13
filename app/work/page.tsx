@@ -370,7 +370,7 @@ export default function WorkPage() {
       </section>
 
       {/* ═══ SECTION 2: SELECTED CLIENT WORK ═══ */}
-      <section className="section section--alt">
+      <section id="selected-work" className="section section--alt">
         <div className="max-w">
           <div className="section-head reveal">
             <div className="eyebrow">Selected Client Work</div>

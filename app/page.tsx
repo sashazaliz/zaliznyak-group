@@ -323,8 +323,8 @@ export default function Page() {
                   <li>Email &amp; CRM integration</li>
                   <li>Analytics setup</li>
                 </ul>
-                <a href="/work" className="service-link">
-                  See selected work
+                <a href="/work#selected-work" className="service-link">
+  See selected work
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
