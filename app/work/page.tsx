@@ -47,6 +47,7 @@ const PROJECTS = [
     name: 'Veldt Skincare',
     tagline: 'Editorial patience. Luxury DTC.',
     callout: 'Editorial pace · DTC engine',
+    buildNote: 'One-click checkout · automated email flows',
     category: 'Luxury DTC',
     role: 'Design + Build',
     year: '2026',
@@ -58,6 +59,7 @@ const PROJECTS = [
     name: 'Moku Tea',
     tagline: 'Artisan tea, sold with restraint.',
     callout: 'Silence as brand asset',
+    buildNote: 'Recurring orders · welcome & winback email',
     category: 'Artisan DTC',
     role: 'Design + Build',
     year: '2026',
@@ -69,6 +71,7 @@ const PROJECTS = [
     name: 'Lume Aesthetics',
     tagline: 'Above the noise.',
     callout: 'Confidence without clinical',
+    buildNote: 'Consult booking · automated reminders',
     category: 'Medical · Wellness',
     role: 'Design + Build',
     year: '2026',
@@ -80,6 +83,7 @@ const PROJECTS = [
     name: 'Coastline HVAC',
     tagline: 'Editorial voice, local business.',
     callout: 'Trades work · Magazine discipline',
+    buildNote: 'Quote capture · instant lead routing',
     category: 'Home Services',
     role: 'Design + Build',
     year: '2026',
@@ -91,6 +95,7 @@ const PROJECTS = [
     name: 'Cove Dental',
     tagline: 'Warmth without softness.',
     callout: 'Dentistry without fluorescent',
+    buildNote: 'Online booking · appointment reminders',
     category: 'Healthcare Practice',
     role: 'Design + Build',
     year: '2026',
@@ -102,6 +107,7 @@ const PROJECTS = [
     name: 'Garner Landscaping',
     tagline: 'A design object, not a brochure.',
     callout: 'Object, not brochure',
+    buildNote: 'Project inquiry · consultation scheduling',
     category: 'Landscape Design',
     role: 'Design + Build',
     year: '2026',
@@ -113,6 +119,7 @@ const PROJECTS = [
     name: 'Hartwell Advisory',
     tagline: 'Independent, minus the ceremony.',
     callout: 'Independent · Not indie',
+    buildNote: 'Calendly intake · lead nurture',
     category: 'Financial Advisory',
     role: 'Design + Build',
     year: '2026',
@@ -124,6 +131,7 @@ const PROJECTS = [
     name: 'Ossian Restaurant',
     tagline: 'A room that speaks first.',
     callout: 'Room first, menu second',
+    buildNote: 'Reservations · waitlist integration',
     category: 'Hospitality · Fine Dining',
     role: 'Design + Build',
     year: '2026',
@@ -135,6 +143,7 @@ const PROJECTS = [
     name: 'Vance & Co',
     tagline: 'Reads like a monograph.',
     callout: 'Monograph, not marketing',
+    buildNote: 'Secure intake · client CRM sync',
     category: 'Professional Services',
     role: 'Design + Build',
     year: '2026',
@@ -169,8 +178,9 @@ export default function WorkPage() {
         <div className="max-w nav-inner">
           <a href="/" className="nav-mark">
             <span className="nav-mark-text">
-  Zaliznyak Group
-</span>
+              Zaliznyak Group
+              <small>Independent Practice</small>
+            </span>
           </a>
           <div className="nav-links">
             <a href="/#about" className="nav-link">About</a>
@@ -391,9 +401,107 @@ export default function WorkPage() {
                   <span>·</span>
                   <span>{p.role}</span>
                 </div>
+                <div className="project-buildnote">
+                  <span className="project-buildnote-label">Under the hood</span>
+                  {p.buildNote}
+                </div>
               </a>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ UNDER THE HOOD ═══ */}
+      <section className="section underhood">
+        <div className="max-w">
+          <div className="section-head reveal">
+            <div className="eyebrow">Under the Hood</div>
+            <h2 className="h2">A site should sell, not just sit there.</h2>
+          </div>
+
+          <div className="underhood-intro reveal">
+            <p className="underhood-lede">
+              A site that looks considered but does not convert is decoration.
+              Every build I ship is wired to move a visitor from first click to
+              paying customer, and to bring them back. The design is what people
+              notice. The system underneath is what earns the investment.
+            </p>
+          </div>
+
+          <div className="underhood-grid reveal">
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">01</div>
+              <h3 className="underhood-cat-name">Payments &amp; Checkout</h3>
+              <p className="underhood-cat-body">
+                Frictionless checkout that does not lose the sale at the last
+                step. I build with Stripe and Shopify checkout, structured so a
+                visitor can buy in as few clicks as possible.
+              </p>
+              <div className="underhood-tools">Stripe · Shopify</div>
+            </div>
+
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">02</div>
+              <h3 className="underhood-cat-name">Email &amp; Automation</h3>
+              <p className="underhood-cat-body">
+                The money is in the follow-up. Automated welcome sequences,
+                abandoned-cart recovery, and winback flows that keep working
+                while you sleep. Built with the platform that fits your stack.
+              </p>
+              <div className="underhood-tools">Kit · Mailchimp · Klaviyo</div>
+            </div>
+
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">03</div>
+              <h3 className="underhood-cat-name">Booking &amp; Scheduling</h3>
+              <p className="underhood-cat-body">
+                For service businesses, the booking is the sale. Scheduling wired
+                directly into the site, with automated confirmations and
+                reminders that cut no-shows and save hours of back-and-forth.
+              </p>
+              <div className="underhood-tools">Calendly · Custom scheduling</div>
+            </div>
+
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">04</div>
+              <h3 className="underhood-cat-name">Lead Capture &amp; CRM</h3>
+              <p className="underhood-cat-body">
+                Every visitor is a potential customer, and none should slip
+                through. Custom forms and lead capture that route straight to
+                your inbox or CRM, so follow-up happens fast, not never.
+              </p>
+              <div className="underhood-tools">Custom forms · CRM sync</div>
+            </div>
+
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">05</div>
+              <h3 className="underhood-cat-name">Tracking &amp; Analytics</h3>
+              <p className="underhood-cat-body">
+                You cannot improve what you cannot see. Conversion tracking and
+                analytics wired in from day one, so every decision after launch
+                is grounded in what visitors actually do, not guesswork.
+              </p>
+              <div className="underhood-tools">GA4 · Meta Pixel · Conversion tracking</div>
+            </div>
+
+            <div className="underhood-cat">
+              <div className="underhood-cat-num">06</div>
+              <h3 className="underhood-cat-name">And Beyond</h3>
+              <p className="underhood-cat-body">
+                The right site meets the business where it is going. When it
+                makes sense, that can extend to SMS reminders, live chat, review
+                automation, and loyalty, layered in as the funnel and the
+                business grow.
+              </p>
+              <div className="underhood-tools">SMS · Live chat · Reviews · Loyalty</div>
+            </div>
+          </div>
+
+          <p className="underhood-close reveal">
+            The result is not just a site that looks the part. It is a system
+            engineered to turn traffic into revenue, and to keep doing it long
+            after launch.
+          </p>
         </div>
       </section>
 
