@@ -79,9 +79,8 @@ export default function AgentsPage() {
         <div className="max-w nav-inner">
           <a href="/" className="nav-mark">
             <span className="nav-mark-text">
-              Zaliznyak Group
-              <small>Independent Practice</small>
-            </span>
+  Zaliznyak Group
+</span>
           </a>
           <div className="nav-links">
             <a href="/#about" className="nav-link">About</a>

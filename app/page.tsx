@@ -63,9 +63,8 @@ export default function Page() {
             }}
           >
             <span className="nav-mark-text">
-              Zaliznyak Group
-              <small>Independent Practice</small>
-            </span>
+  Zaliznyak Group
+</span>
           </a>
           <div className="nav-links">
   <a
@@ -107,13 +106,15 @@ export default function Page() {
       <section className="hero">
         <div className="max-w">
           <h1 className="hero-h1">
-            Analytics, AI, and decision systems that turn{' '}
-            <em>data into outcomes.</em>
+            Building the analytics, automation, and websites that{' '}
+            <em>businesses run on.</em>
           </h1>
           <p className="hero-sub">
-            Zaliznyak Group is an independent practice applying AI/ML, analytics,
-            and automation to commercial and operational problems. Built on years
-            leading commercial analytics in life sciences.
+            I have spent twenty-five years inside the enterprise, building the
+            data, analytics, and systems teams depend on, and I have started a
+            handful of my own ventures along the way. I like working across
+            different problems and different worlds, and that range is what I
+            bring to every engagement.
           </p>
           <div className="hero-actions">
             <a
@@ -143,19 +144,19 @@ export default function Page() {
 </a>
           </div>
           <div className="hero-chips">
-            <span className="hero-chip">15+ years in life sciences commercial</span>
+            <span className="hero-chip">25+ years across data &amp; systems</span>
             <span className="hero-chip">Founder, OptionsAnalytx</span>
             <span className="hero-chip">Based in San Diego</span>
           </div>
         </div>
       </section>
 
-      {/* ═══ ABOUT ═══ */}
+            {/* ═══ ABOUT ═══ */}
       <section id="about" className="section section--alt">
         <div className="max-w">
           <div className="reveal" style={{ marginBottom: '3rem' }}>
             <div className="eyebrow">About</div>
-            <h2 className="h2">A senior operator. A builder.</h2>
+            <h2 className="h2">Corporate operator. Independent builder.</h2>
           </div>
 
           <div className="about-grid reveal">
@@ -164,21 +165,40 @@ export default function Page() {
             </div>
             <div>
               <p className="about-body">
-                For 15+ years I have built the commercial systems, analytics, and
-                infrastructure behind specialty and rare disease launches across
-                pharma, biotech, and medical device. I led commercial analytics
-                and insights for a rare neurology franchise, built the KPI
-                frameworks and patient journey analytics leadership ran on, owned
-                the specialty pharmacy data strategy end to end, and directed
-                AI/ML predictive work that improved patient conversion. Earlier,
-                I built and owned the enterprise platform an entire field sales
-                organization ran on.
+                Most of my career has been spent inside the enterprise, building
+                the data, analytics, and systems that businesses rely on to make
+                decisions. I started in corporate finance, in budgeting and
+                forecasting, where financial modeling and data work became second
+                nature. That foundation has run through everything since: the way
+                I think about measurement, the way I structure a problem, the way
+                I turn a mess of numbers into something a team can act on.
               </p>
               <p className="about-body" style={{ marginTop: '1.25rem' }}>
-                I do my best work hands on, at the intersection of business and
-                technology. Zaliznyak Group is where I bring that to companies
-                that need to turn data into outcomes and build AI driven
-                efficiency.
+                Over the years I kept building things of my own on the side. A
+                skincare and microdermabrasion business with a partner. A
+                consulting practice teaching companies to get more out of Excel
+                and their own data. An upscale baby goods store I started and
+                scaled on Shopify during COVID. OptionsAnalytx, the options
+                research platform I built and run today. Along the way I designed
+                and developed more than a dozen websites, everything from quick
+                builds on Shopify and Wix to fully custom code, for my own
+                ventures and for people who needed the help. None of it was a
+                grand plan. I just like building, and I like working across
+                different problems and different industries.
+              </p>
+              <p className="about-body" style={{ marginTop: '1.25rem' }}>
+                Most recently I spent years building the commercial systems and
+                analytics behind specialty and rare disease launches, owning data
+                strategy end to end and directing the machine learning work
+                behind predicting patient behavior. It is the same instinct that
+                runs through everything I do, applied at enterprise scale.
+              </p>
+              <p className="about-body" style={{ marginTop: '1.25rem' }}>
+                I do my best work hands on, close to the business and close to the
+                build. Zaliznyak Group is where I bring that to companies and
+                founders who want an operator in the room: someone who can build
+                the analytics, automate the busywork, and ship a site that looks
+                and works the part.
               </p>
               <div className="about-name">
                 <strong>Alex Zaliznyak</strong>
@@ -189,12 +209,12 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ═══ SERVICES ═══ */}
+            {/* ═══ SERVICES ═══ */}
       <section id="services" className="section">
         <div className="max-w">
           <div className="section-head reveal">
             <div className="eyebrow">Services</div>
-            <h2 className="h2">Two practices. One throughline: decisions.</h2>
+            <h2 className="h2">Three services. One dedicated operator.</h2>
           </div>
 
           <div className="services-grid reveal">
@@ -202,27 +222,40 @@ export default function Page() {
             <div className="service">
               <div className="service-num">01</div>
               <h3 className="service-name">
-                Commercial Analytics &amp; Decision Systems
+                Analytics &amp; Decision Support
               </h3>
               <p className="service-body">
-                Turning messy, multi source data into decision ready insight and
-                systems. I build the measurement and analytics that leadership
-                and teams actually use: KPI frameworks and performance metrics,
-                customer and patient journey analytics, forecasting, segmentation
-                and targeting, and predictive modeling. I also advise early stage
-                companies on go to market strategy, operations, and data driven
-                decision support. The throughline is decisions: what to measure,
-                what it means, and what to do next.
+                Turning messy, multi-source data into decisions teams actually
+                use. I build the measurement and analytics behind commercial and
+                operational work: KPI frameworks, customer and patient journey
+                analytics, forecasting, segmentation, and predictive modeling. I
+                also advise early stage companies on go to market and operations.
+                The throughline is decisions: what to measure, what it means,
+                and what to do next.
               </p>
               <div className="service-footer">
                 <ul className="service-list">
                   <li>KPI frameworks</li>
-                  <li>Patient journey analytics</li>
+                  <li>Journey analytics</li>
                   <li>Forecasting</li>
                   <li>Segmentation &amp; targeting</li>
                   <li>Predictive modeling</li>
                   <li>GTM advisory</li>
                 </ul>
+                <a href="#contact" className="service-link">
+                  Start a conversation
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
               </div>
             </div>
 
@@ -252,24 +285,64 @@ export default function Page() {
                   <li>Decision support</li>
                 </ul>
                 <a href="/agents" className="service-link">
-  See seven ways it earns its keep
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="5" y1="12" x2="19" y2="12" />
-    <polyline points="12 5 19 12 12 19" />
-  </svg>
-</a>
+                  See seven ways it earns its keep
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Service 3 */}
+            <div className="service">
+              <div className="service-num">03</div>
+              <h3 className="service-name">Web Design &amp; Development</h3>
+              <p className="service-body">
+                Bespoke websites built one at a time, for one business, for one
+                customer. No templates, no page builders. I handle design, build,
+                and the technical layer underneath: performance, SEO foundations,
+                structured data, and the integrations that make a site actually
+                run, from Stripe and payments to email, CRM, booking, and
+                analytics. The result is a site that looks considered and works
+                as hard as the business behind it.
+              </p>
+              <div className="service-footer">
+                <ul className="service-list">
+                  <li>Bespoke design</li>
+                  <li>Custom development</li>
+                  <li>SEO foundations</li>
+                  <li>Stripe &amp; payments</li>
+                  <li>Email &amp; CRM integration</li>
+                  <li>Analytics setup</li>
+                </ul>
+                <a href="/work" className="service-link">
+                  See selected work
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
 
       {/* ═══ CONTACT ═══ */}
