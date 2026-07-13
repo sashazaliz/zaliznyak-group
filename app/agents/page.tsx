@@ -96,7 +96,7 @@ export default function AgentsPage() {
         <div className="max-w">
           <div className="agents-hero-eyebrow">Applied Patterns · Zaliznyak Group</div>
           <h1 className="agents-hero-h1">
-            Seven ways AI agents earn their keep for teams that need <em>hours back.</em>
+            Seven ways AI agents make a difference for teams that need <em>hours back.</em>
           </h1>
           <p className="agents-hero-thesis">
             What follows is a set of applied patterns for putting AI agents to work on real business problems. These are not delivered case studies. They are the patterns I return to when scoping automation work, with a look at how the architecture holds together and what the return typically looks like in practice.
