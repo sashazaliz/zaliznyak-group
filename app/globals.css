@@ -372,7 +372,7 @@ img, svg { display: block; max-width: 100% }
 ═══════════════════════════════════════════ */
 .about-grid {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 1fr;
   gap: 4rem;
   align-items: start;
 }
