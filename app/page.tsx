@@ -160,11 +160,8 @@ export default function Page() {
           </div>
 
           <div className="about-grid reveal">
-            <div className="about-photo">
-              <img src="/alex.jpg" alt="Alex Zaliznyak, founder and principal of Zaliznyak Group" />
-            </div>
-            <div>
-              <p className="about-body">
+  <div>
+    <p className="about-body">
                 Most of my career has been spent inside the enterprise, building
                 the data, analytics, and systems that businesses rely on to make
                 decisions. I started in corporate finance, in budgeting and
